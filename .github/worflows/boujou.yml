@@ -1,9 +1,6 @@
 name: Test Boujou
 run-name: ${{ github.actor }} initializing GitHub Actions
-on:
-  push:
-    branches:
-      - 2-cicd
+on: [push]
 jobs:
   info:
     runs-on: ubuntu-latest
