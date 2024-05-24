@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output github context
-        run: echo "${{ secrets }}"
+        run: echo "${{ toJSON(secrets) }}"
   test:
     runs-on: ubuntu-latest
     steps:
