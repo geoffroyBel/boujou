@@ -5,8 +5,8 @@ jobs:
   info:
     runs-on: ubuntu-latest
     steps:
-      - name: Output github context
-        run: echo "${{ toJSON(github) }}"
+      - name: Github secret
+        run: echo "${{ secrets.GITHUB_TOKEN }}"
   test:
     runs-on: ubuntu-latest
     steps:
