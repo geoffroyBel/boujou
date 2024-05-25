@@ -5,3 +5,16 @@ services:
       - "80:3000"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+  db:
+    image: postgres:15-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=boujou
+
+volumes:
+  data:

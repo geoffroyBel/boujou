@@ -1,16 +1,29 @@
 services:
-  api:
+  develop:
     image: ghcr.io/geoffroybel/next-boujou:latest
     ports:
       - "3000:3000"
     labels:
       - com.centurylinklabs.watchtower.enable=true
-  # db:
-  #   image: mariadb:11.2
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: "root"
-  #     MYSQL_USER: "geoff"
-  #     MYSQL_PASSWORD: "geoff"
-  #     MYSQL_DATABASE: "db"
-  #   volumes:
-  #     - ./docker/mysql/data:/var/lib/mysql
+  db:
+    image: postgres:15-alpine
+    ports:
+      - 5431:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=boujou
+
+  pg-admin:
+    image: dpage/pgadmin4:6
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
+    ports:
+      - "5050:5050"
+
+volumes:
+  data:

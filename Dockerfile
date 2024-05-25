@@ -16,7 +16,6 @@ WORKDIR /app
 
 COPY --from=build /app/package.json /app/
 COPY --from=build /app/node_modules /app/node_modules
-COPY --from=build /app/node_modules /app/node_modules
 COPY --from=build /app/.next /app/.next
 COPY --from=build /app/public /app/public
 
